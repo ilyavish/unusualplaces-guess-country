@@ -11,6 +11,7 @@
 
 .up-gtc__title {
   margin: 0 0 12px;
+  color: #1f2933;
   font-size: 1.65rem;
   font-weight: 900;
 }
@@ -28,7 +29,12 @@
 
 .up-gtc__question {
   margin: 10px 0;
+  color: #273444;
   font-size: 1.3rem;
+}
+
+.up-gtc a {
+  color: #1565c0;
 }
 
 .up-gtc__options,
@@ -248,28 +254,40 @@
 
 @media (prefers-color-scheme: dark) {
   .up-gtc {
-    border-color: #1b1f27;
-    background: #0f1114;
-    color: #e7e9ee;
+    border-color: #2b3340;
+    background: #151922;
+    color: #eef2f7;
+  }
+
+  .up-gtc__title {
+    color: #ffffff;
+  }
+
+  .up-gtc__question {
+    color: #f3f6fb;
+  }
+
+  .up-gtc a {
+    color: #8ab8ff;
   }
 
   .up-gtc__image {
-    background: #1f2937;
+    background: #202837;
   }
 
   .up-gtc__button--secondary,
   .up-gtc__button--dark {
-    background: #2a2f3a;
+    background: #343b49;
   }
 
   .up-gtc__option {
-    border-color: #2a3140;
-    background: #131720;
-    color: #e7e9ee;
+    border-color: #3a4354;
+    background: #1d2430;
+    color: #f0f4fa;
   }
 
   .up-gtc__option:hover {
-    background: #17202b;
+    background: #263141;
   }
 
   .up-gtc__option.is-correct {
@@ -287,17 +305,17 @@
   .up-gtc__score,
   .up-gtc__unlock,
   .up-gtc__auto {
-    color: #b8beca;
+    color: #cbd3df;
   }
 
   .up-gtc__drawer-panel {
-    border-color: #1b1f27;
-    background: #0f1114;
-    color: #e7e9ee;
+    border-color: #2b3340;
+    background: #151922;
+    color: #eef2f7;
   }
 
   .up-gtc__progress {
-    background: #1f2937;
+    background: #263141;
   }
 
   .up-gtc__progress span {
