@@ -59,8 +59,8 @@ function up_gtc_shortcode($atts = [], $content = null, $tag = '') {
         'UPGuessCountryConfig',
         [
             'roundSize' => 10,
-            'unlockBatch' => 10,
-            'daysPerBatch' => 3,
+            'unlockBatch' => 20,
+            'daysPerBatch' => 1,
         ]
     );
 

@@ -22,4 +22,6 @@ The old inline HTML block can be removed from the page once the shortcode is add
 
 The game stores visitor progress in localStorage, not cookies. Returning visitors on the same browser keep their unlocked places, badges, played days, and lifetime score. Existing progress from the older inline version is migrated automatically.
 
+The unlock flow starts each browser with 20 places and unlocks the remaining 20 on a later-day return.
+
 Images are requested from i0.wp.com at responsive sizes and the next few round images are preloaded to reduce wait time during play.

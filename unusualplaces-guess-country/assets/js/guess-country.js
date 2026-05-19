@@ -88,8 +88,8 @@
 
   const config = Object.assign({
     roundSize: 10,
-    unlockBatch: 10,
-    daysPerBatch: 3
+    unlockBatch: 20,
+    daysPerBatch: 1
   }, window.UPGuessCountryConfig || {});
 
   const PLACES = RAW_PLACES.map((place, index) => {
@@ -155,9 +155,11 @@
     }
 
     function targetUnlockedCount() {
+      const unlockBatch = Number(config.unlockBatch || 20);
+      const daysPerBatch = Number(config.daysPerBatch || 1);
       const elapsedDays = Math.max(0, daysBetween(store.firstSeen, todayKey()));
-      const batches = 1 + Math.floor(elapsedDays / Number(config.daysPerBatch || 3));
-      return Math.min(PLACES.length, Math.max(10, batches * Number(config.unlockBatch || 10)));
+      const batches = 1 + Math.floor(elapsedDays / daysPerBatch);
+      return Math.min(PLACES.length, Math.max(unlockBatch, batches * unlockBatch));
     }
 
     function growUnlockedPoolToTarget() {
@@ -165,7 +167,7 @@
       store.unlockedIds = store.unlockedIds.filter(id => validIds.has(id));
 
       if (!store.unlockedIds.length) {
-        store.unlockedIds = shuffle(PLACES.map(place => place.id)).slice(0, Math.min(Number(config.unlockBatch || 10), PLACES.length));
+        store.unlockedIds = shuffle(PLACES.map(place => place.id)).slice(0, Math.min(Number(config.unlockBatch || 20), PLACES.length));
       }
 
       const target = targetUnlockedCount();
@@ -316,9 +318,10 @@
     function showUnlockInfo() {
       const target = targetUnlockedCount();
       const total = PLACES.length;
+      const daysPerBatch = Number(config.daysPerBatch || 1);
       const diff = Math.max(0, daysBetween(store.firstSeen, todayKey()));
-      const passedInBatch = diff % Number(config.daysPerBatch || 3);
-      const daysToNext = target < total ? (passedInBatch === 0 ? Number(config.daysPerBatch || 3) : Number(config.daysPerBatch || 3) - passedInBatch) : 0;
+      const passedInBatch = diff % daysPerBatch;
+      const daysToNext = target < total ? (passedInBatch === 0 ? daysPerBatch : daysPerBatch - passedInBatch) : 0;
 
       els.unlock.textContent = target < total
         ? "Unlocked places available: " + store.unlockedIds.length + "/" + total + ". Next unlock in " + daysToNext + " day" + (daysToNext === 1 ? "." : "s.")
